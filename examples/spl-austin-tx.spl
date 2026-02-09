@@ -1,0 +1,58 @@
+index=austin Latitude>5 AND Longitude<0 
+| fillnull value=NONE
+| search  ("Zip Code"="*") ("Category Description"="*") ("Highest Offense Description"="THEFT BY SHOPLIFTING" OR "Highest Offense Description"="AGG PROMOTION OF PROSTITUTION" OR "Highest Offense Description"="AGG ASSAULT FAM/DATE VIOLENCE" OR "Highest Offense Description"="ATT ARSON" OR "Highest Offense Description"="DOC OFFENSIVE GESTURE" OR "Highest Offense Description"="DOMESTIC VIOLENCE/ALARM")  ("Location Type"="*")
+| rename Latitude as latitude,
+Longitude as longitude,
+"Occurred Date Time" as occurred,
+"Report Date Time" as reported,
+"Category Description" as Category,
+"Family Violence" as famViolence,
+"Highest Offense Description" as offenseDescription,
+"Zip Code" as zipCode,
+"Location Type" as locDescr
+| eval markerColor=case(
+like(offenseDescription, "%MURDER%"), "red", 
+like(offenseDescription, "%ASSAULT%"), "pink", 
+like(offenseDescription, "%BURG%"), "green", 
+like(offenseDescription, "%AGG%"), "orange", 
+like(offenseDescription, "%POSS%"), "darkred", 
+like(offenseDescription, "%THEFT%"), "gray",
+like(offenseDescription, "%PROSTITUTION%"), "black",
+like(offenseDescription, "%TERROR%"), "darkpurple"),
+
+icon=case(like(offenseDescription, "%MURDER%"), "exclamation-triangle", 
+like(offenseDescription, "%AGG%"), "battery-4", 
+like(offenseDescription, "%ASSAULT%"), "battery-3", 
+like(offenseDescription, "%TERROR%%"), "gavel", 
+like(offenseDescription, "%BURG%"), "building", 
+like(offenseDescription, "%THEFT%"), "shopping-cart", 
+like(offenseDescription, "%TO VEHICLE%"), "car", 
+1=1, "hand-lizard-o"),
+
+layerDescription=case(
+like(offenseDescription, "%MURDER%"), "Murder", 
+like(offenseDescription, "%AGG%"), "Aggrivated", 
+like(offenseDescription, "%ASSAULT%"), "Assault", 
+like(offenseDescription, "%TERROR%%"), "Terror", 
+like(offenseDescription, "%BURG%"), "Burlary", 
+like(offenseDescription, "%THEFT%"), "Theft", 
+like(offenseDescription, "%TO VEHICLE%"), "Vehicle", 
+1=1, "Other"),
+
+description="<ul style='padding: 0;list-style: none;'>
+<li>Date/Time of Incident: <strong>".occurred."</strong></li>
+<li>Date/Time of Report: <strong>".reported."</strong></li>
+<br/>
+<li><strong>Incident Information</strong></li>
+<li>Crime Category: <strong>".Category."</strong></li>
+<li>Offense Description: <strong>".offenseDescription."</strong></li>
+<li>Family Violence: <strong>".famViolence."</strong></li>
+<br/>
+<li><strong>Location Information</strong></li>
+<li>Location: <strong>".locDescr."</strong></li>
+<li>Street Address: <strong>".Address."</strong></li>
+<li>ZIP Code: <strong>".zipCode."</strong></li>
+<li>Long/Lat: <strong>".longitude." | ".latitude."</strong></li>
+</ul>",
+tooltip = description, clusterGroup="default"
+| table latitude longitude description markerColor tooltip icon clusterGroup, layerDescription
