@@ -4,10 +4,12 @@ Maps+ for Splunk Changelog
 # 3.1.9 (2026-02-07) mjeffery@splunk.com
 * Fixed "Format" menu not rendering in Splunk Enterprise 10.x
     - Corrected "(Continue)" to "Continue" in formatter.html for leaflet_maps and maps-plus folders
+* Disabled Splunk Version check
 * Updated all npm packages in respective /visualization/ directories
   * npm outdated  && npm update  && npm install 
 * Tested maps_plus functionality in Splunk Enterprise 10.2 
     - "Format" menu renders and functions as before.
+    - Not all functions were tested, but core visual features work.
 
 # 3.0.0 (2019-05-09)
 * Removed support for Splunk 6.x
