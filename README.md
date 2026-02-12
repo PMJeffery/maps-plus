@@ -24,5 +24,6 @@
 
 ## Fix Existing Maps+ Visualizations
 * Due to changing the name of the folder from "leaflet_map_app" to "maps_plus" existing Maps+ viz will not render.
+* CLONE existing dashboards with Maps+ visualizations
   * Open Classic Dashboard and View Source
     * CTRL+H "leaflet_maps_app.maps-plus", replace with "maps_plus.maps-plus"
