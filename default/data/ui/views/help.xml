@@ -168,7 +168,7 @@ carpooling purposes. In: Brazilian Conference on Intelligent Systems. [S.l.: s.n
 <p>Add custom overlays to the map. The first release implements a KML or KMZ overlay feature. If you have existing KML/KMZ files that define features (polyline, polygons, whatever) you can now leverage them to overlay these features on the map.</p>
 <h5 id="kmlkmzoverlay">KML/KMZ Overlay</h5>
 <p>Copy any KML or KMZ files into the following directory</p>
-<pre><code>$SPLUNK_HOME/etc/apps/leaflet_maps_app/appserver/static/visualizations/leaflet_maps/contrib/kml
+<pre><code>$SPLUNK_HOME/etc/apps/maps_plus/appserver/static/visualizations/leaflet_maps/contrib/kml
 </code></pre>
 <p>Click <code>Format</code> and selct the <code>Overlays</code> tab. Enter a comma separated list of filenames that you uploaded to the above directory. File order dictates feature layering - e.g., file1.kml renders beneath file2.kml</p>
 <pre><code>file1.kml,file2.kmz

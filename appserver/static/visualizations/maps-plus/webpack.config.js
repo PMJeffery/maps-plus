@@ -4,10 +4,10 @@ var path = require('path');
 module.exports = {
     entry: ['maps-plus'],
     resolve: {
-        extensions: ['.js'],
-        alias: {
-            'maps-plus': path.join(__dirname, 'src/maps-plus.js')
-        }
+        modules: [
+            path.join(__dirname, 'src'),
+            'node_modules'
+        ]
     },
     output: {
         filename: 'visualization.js',
@@ -17,161 +17,67 @@ module.exports = {
         rules: [
             {
                 test: /leaflet\.spin\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        L: 'leaflet'
-                    }
-                }
+                use: 'imports-loader?L=leaflet'
             },
             {
                 test: /HeatLayer\.js$/,
-                use: [
-                    {
-                        loader: 'imports-loader',
-                        options: {
-                            L: 'leaflet',
-                            simpleheat: 'simpleheat'
-                        }
-                    }
-                ]
+                use: ['imports-loader?L=leaflet', 'imports-loader?simpleheat']
             },
             {
                 test: /leaflet\.awesome-markers\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        L: 'leaflet'
-                    }
-                }
+                use: 'imports-loader?L=leaflet'
             },
             {
                 test: /leaflet-vector-markers\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        L: 'leaflet'
-                    }
-                }
+                use: 'imports-loader?L=leaflet'
             },
             {
                 test: /leaflet\.featuregroup\.subgroup-src\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        L: 'leaflet'
-                    }
-                }
+                use: 'imports-loader?define=>false'
             },
             {
                 test: /Modal\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        _: 'underscore'
-                    }
-                }
+                use: 'imports-loader?_=underscore'
             },
             {
                 test: /CLDRPluralRuleParser\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.emitter\.bidi\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.emitter\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.fallbacks\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.language\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.messagestore\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /jquery\.i18n\.parser\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             },
             {
                 test: /leaflet-measure\.js$/,
-                use: [
-                    {
-                        loader: 'imports-loader',
-                        options: {
-                            L: 'leaflet'
-                        }
-                    }
-                ]
+                use: ['imports-loader?L=leaflet', 'transform-loader/cacheable?brfs']
             },
             {
                 test: /LeafletPlayback\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        $: 'jquery',
-                        jQuery: 'jquery'
-                    }
-                }
+                use: 'imports-loader?$=jquery,jQuery=jquery'
             }
         ]
     },

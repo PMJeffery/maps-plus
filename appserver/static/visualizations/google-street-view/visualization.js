@@ -72,9 +72,9 @@ define(["api/SplunkVisualizationBase","api/SplunkVisualizationUtils"], function(
 	        maxResults: 0,
 	        tileLayer: null,
 			mapOptions: {},
-	        contribUri: '/en-US/static/app/leaflet_maps_app/visualizations/google-street-view/contrib/',
+	        contribUri: '/en-US/static/app/maps_plus/visualizations/google-street-view/contrib/',
 	        defaultConfig:  {
-	            'display.visualizations.custom.leaflet_maps_app.google-street-view.googleMapsApiKey': ""
+	            'display.visualizations.custom.maps_plus.google-street-view.googleMapsApiKey': ""
 	        },
 
 	        initialize: function() {

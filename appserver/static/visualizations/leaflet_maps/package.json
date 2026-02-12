@@ -1,6 +1,6 @@
 {
   "name": "leaflet_maps_app",
-  "version": "1.5.18",
+  "version": "1.5.17",
   "description": "Leaflet maps app with Markercluster plugin functionality.",
   "main": "visualization.js",
   "scripts": {
@@ -11,25 +11,24 @@
   "author": "Splunk",
   "license": "MIT",
   "devDependencies": {
-    "exports-loader": "^5.0.0",
-    "imports-loader": "^0.8.0",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "imports-loader": "^0.6.5",
+    "webpack": "^1.12.6"
   },
   "dependencies": {
-    "brfs": "^2.0.2",
+    "brfs": "^1.4.3",
     "drmonty-leaflet-awesome-markers": "^2.0.2",
-    "jquery": "^4.0.0",
-    "jszip": "^3.10.1",
-    "leaflet-measure": "^3.1.0",
-    "leaflet": "^1.9.4",
+    "jquery": "^3.6.0",
+    "jszip": "^3.9.1",
+    "jszip-utils": "0.0.2",
+    "leaflet": "^1.7.1",
     "leaflet-bing-layer": "^3.3.0",
     "leaflet-contextmenu": "^1.2.1",
     "leaflet-dialog": "^1.0.1",
     "leaflet-google-places-autocomplete": "^0.0.8",
+    "leaflet-measure": "^2.0.2",
     "load-google-maps-api": "^1.0.0",
     "togeojson": "^0.14.2",
     "transform-loader": "^0.2.3",
-    "underscore": "^1.13.7"
+    "underscore": "^1.13.2"
   }
 }

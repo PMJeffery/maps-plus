@@ -4,25 +4,19 @@ var path = require('path');
 module.exports = {
     entry: ['google_street_view'],
     resolve: {
-        extensions: ['.js'],
-        alias: {
-            'google_street_view': path.join(__dirname, 'src/google_street_view.js')
-        }
+        root: [
+            path.join(__dirname, 'src'),
+        ]
     },
     output: {
         filename: 'visualization.js',
         libraryTarget: 'amd'
     },
     module: {
-        rules: [
+        loaders: [
             {
                 test: /Modal\.js$/,
-                use: {
-                    loader: 'imports-loader',
-                    options: {
-                        _: 'underscore'
-                    }
-                }
+                loader: 'imports-loader?_=underscore'
             }
         ]
     },

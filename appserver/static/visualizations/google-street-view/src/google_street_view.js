@@ -3,7 +3,7 @@ define([
             'underscore',
             'api/SplunkVisualizationBase',
             'api/SplunkVisualizationUtils',
-            'google-maps',
+            'load-google-maps-api-2',
             '../../maps-plus/contrib/js/Modal',
         ],
         function(
@@ -11,7 +11,7 @@ define([
             _,
             SplunkVisualizationBase,
             SplunkVisualizationUtils,
-            googleMaps,
+            loadGoogleMapsAPI,
             Modal
         ) {
 
@@ -20,9 +20,9 @@ define([
         maxResults: 0,
         tileLayer: null,
 		mapOptions: {},
-        contribUri: '/en-US/static/app/leaflet_maps_app/visualizations/google-street-view/contrib/',
+        contribUri: '/en-US/static/app/maps_plus/visualizations/google-street-view/contrib/',
         defaultConfig:  {
-            'display.visualizations.custom.leaflet_maps_app.google-street-view.googleMapsApiKey': ""
+            'display.visualizations.custom.maps_plus.google-street-view.googleMapsApiKey': ""
         },
 
         initialize: function() {
@@ -190,14 +190,14 @@ define([
                                   context: this})
             .then($.proxy(function(googleMapsApiKey) {
                 // Load Google Maps
-                googleMaps.load({key: googleMapsApiKey}).then(function(googleMaps) {
+                loadGoogleMapsAPI({key: googleMapsApiKey}).then(function(googleMaps) {                    
                     var coordinates = dataRows[0]["coordinates"].split(/,/);
                     var latlng = {lat: parseFloat(coordinates[0]), lng: parseFloat(coordinates[1])};
                     var map = this.map = new googleMaps.Map(this.el);
                     var panorama = this.panorama = new googleMaps.StreetViewPanorama(this.el, {position: latlng,
                                                                                                     pov: {
                                                                                                     heading: 34,
-                                                                                                    pitch: 5
+                                                                                                    pitch: 5 
                                                                                                     }
                                                                                             });
     
